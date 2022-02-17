@@ -1,0 +1,55 @@
+.section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.middle {
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.container {
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+}
+
+.controls {
+    width: 300px;
+    display: flex;
+    background-color: lightgrey;
+}
+
+.temparrowbox {
+    width: 40px;
+    height: 40px;
+}
+
+#left {
+    border-top: 5px solid blue;
+    border-left: 5px solid blue;
+    transform: rotate(-45deg);
+}
+
+#right {
+    border-top: 5px solid blue;
+    border-right: 5px solid blue;
+    transform: rotate(45deg);
+}
+
+#up {
+    border-left: 5px solid blue;
+    border-top: 5px solid blue;
+    transform: rotate(45deg);
+}
+
+#down {
+    border-right: 5px solid blue;
+    border-bottom: 5px solid blue;
+    transform: rotate(45deg);
+}

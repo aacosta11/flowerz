@@ -1,0 +1,6 @@
+.personbox {
+    position: relative;
+    width: 60px;
+    height: 80px;
+    z-index: 9;
+}

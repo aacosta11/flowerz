@@ -1,0 +1,11 @@
+.flower {
+    position: relative;
+    z-index: 8;
+    width: 97px;
+}
+
+.flower-count {
+    position: absolute;
+    left: 5%;
+    top: 20%;
+}

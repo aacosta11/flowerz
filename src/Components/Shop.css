@@ -1,0 +1,55 @@
+.shop {
+    position: absolute;
+    left: 5%;
+    top: 25%;
+    padding: 5px;
+    background-color: lightblue;
+}
+
+.shop-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 10;
+    display: flex;
+    padding: 100px 0;
+}
+
+.close-shop {
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.shop-content {
+    height: 600px;
+    width: 300px;
+    background-color: aliceblue;
+    margin: 0 auto;
+    z-index: 11;
+    padding: 15px 6px;
+}
+
+.items {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 5px;
+}
+
+.item {
+    width: 90%;
+    height: 30px;
+    background-color: aqua;
+    padding: 3px;
+    display: flex;
+    justify-content: space-between;
+}
