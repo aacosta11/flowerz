@@ -2,21 +2,21 @@ const mongoose = require('mongoose');
 const Schema = new mongoose.Schema({
     title: {
         type: String,
-        required: [true, 'Title is required'],
+        required: [true, 'Title is required']
     },
     header: {
-        type: String,
+        type: String
     },
     body: {
         type: String,
-        required: [true, 'Body is required'],
+        required: [true, 'Body is required']
     },
     footer: {
-        type: String,
+        type: String
     },
     cost: {
         type: Number
     }
-})
-const Text = mongoose.model('Text', Schema);
-module.exports = Text;
+});
+const Secret = mongoose.model('Secret', Schema);
+module.exports = Secret;

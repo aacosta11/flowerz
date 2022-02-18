@@ -1,0 +1,51 @@
+input {
+    padding: 5px 3px;
+}
+
+.login-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    z-index: 10;
+    display: flex;
+    padding: 100px 0;
+}
+
+.login-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    max-width: 500px;
+    row-gap: 25px;
+    padding: 30px 15px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.input-wrap {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    row-gap: 3px;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 15px;
+}

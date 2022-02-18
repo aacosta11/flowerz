@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import LoginContext from "../Context/LoginContext";
 import axios from "axios";
-import Message from "./Messages";
 import './Shop.css';
 const Shop = props => {
     const [shopIsOpen,setShopIsOpen] = useState(false);
 
     const [itemsForSale,setItemsForSale] = useState([]);
+
+    const {user} = useContext(LoginContext);
 
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/text`)
@@ -13,6 +15,15 @@ const Shop = props => {
             setItemsForSale(res.data);
         })
         .catch(err => console.log(err));
+        if (props.count >= 100 && user === "habibi") {
+            axios.get(`http://localhost:8000/api/secret`)
+            .then(res => {
+                let shopCopy = [...itemsForSale];
+                shopCopy.push(res.data);
+                setItemsForSale(shopCopy);
+            })
+            .catch(err => console.log(err));
+        }
     },[])
 
     const handlePurchase = (e) => {

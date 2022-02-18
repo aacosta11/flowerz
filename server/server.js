@@ -8,6 +8,6 @@ app.use(cors());
 app.use(express.json(),express.urlencoded({extended:true}));
 
 require('./config/mongoose.config')(DB);
-require('./routes/text.routes')(app);
+require('./routes/flowerz.routes')(app);
 
 app.listen(PORT,()=>{console.log(`Server is running on port ${PORT}`)});

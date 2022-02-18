@@ -1,17 +1,3 @@
-// theres no way u found this, lol, but hey if u did, u did.
-
-// i've liked u for a while now, chelsey. i'm just scared shitless 
-// i might end up fucking things up and losing a good friend, maybe even 2. 
-
-// at the same time though, i feel like the risk is worth it.
-
-// if u found this, i'd love to hang sometime. but just because u found
-// this doesnt mean u have to tell me u did, though. it's hidden for a reason. :)
-
-// dont trip, i'll be sure to make things exra awkward if u found this, lol.
-
-// see ya chelsey.
-
 import './App.css';
 import { useState, useEffect } from "react";
 import backdrop from './img/backdrop.png';
@@ -22,7 +8,11 @@ import PositionContext from './Context/PositionContext';
 import FlowerContext from './Context/FlowerContext';
 import Backpack from './Components/Backpack';
 import Shop from './Components/Shop';
+import Login from './Components/Login';
+import LoginContext from './Context/LoginContext';
 function App() {
+  const [user,setUser] = useState(null);
+
   const [position,setPosition] = useState({
     x: 150,
     y: 450,
@@ -77,22 +67,26 @@ function App() {
   },[position])
 
   return (<>
-  <PositionContext.Provider value={{position,setPosition}}>
-    <FlowerContext.Provider value={{flowerPos,setFlowerPos}}>
-      <div className="backdrop-container">
-        <img src={backdrop} alt="backdrop" className="backdrop" />
-      </div>
-      <div className="window">
-        <div className="gamespace">
-          <Person />
-          <Flower count={flowerCount}/>
-          <Shop count={flowerCount} purchase={e=>handlePurchase(e)} />
-          <Backpack items={backpack} /> 
+  <LoginContext.Provider value={{user,setUser}} >
+    <Login />
+    <PositionContext.Provider value={{position,setPosition}}>
+      <FlowerContext.Provider value={{flowerPos,setFlowerPos}}>
+        <div className="backdrop-container">
+          <img src={backdrop} alt="backdrop" className="backdrop" />
         </div>
-      </div>
-    </FlowerContext.Provider>
-    <Controls />
-  </PositionContext.Provider>
+        <div className="window">
+          <div className="gamespace">
+            <Person />
+            <Flower count={flowerCount}/>
+            <Shop count={flowerCount} purchase={e=>handlePurchase(e)} />
+            <Backpack items={backpack} /> 
+          </div>
+        </div>
+      </FlowerContext.Provider>
+      
+      <Controls />
+    </PositionContext.Provider>
+  </LoginContext.Provider>
   </>);
 }
 
