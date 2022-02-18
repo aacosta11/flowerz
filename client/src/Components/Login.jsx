@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import LoginContext from "../Context/LoginContext";
+import title from '../img/title.png';
 import './Login.css';
 const Login = props => {
     const {setUser} = useContext(LoginContext);
@@ -38,9 +39,7 @@ const Login = props => {
         <>
             <div className="login-overlay">
                 <div className="login-container">
-                    <div className="title">
-                        <img src="" alt="" />
-                    </div>
+                    <img src={title} alt="" id="title"/>
                     <div className="login-form" >
                         <h2>login</h2>
                         <div id="username-wrap" className="input-wrap">

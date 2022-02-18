@@ -49,3 +49,8 @@ input {
     font-size: 12px;
     margin-top: 15px;
 }
+
+#title {
+    position: absolute;
+    top: 120px;
+}
