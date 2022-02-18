@@ -5,11 +5,13 @@ module.exports = app =>{
     app.get('/api/text',Text.getText);
     app.get('/api/text/:id',Text.getTextById);
     app.post('/api/text',Text.createText);
+    app.put('/api/text/:id',Text.updateText);
     app.delete('/api/text/:id',Text.deleteText);
 
     app.get('/api/secret',Secret.getSecret);
     app.get('/api/secret/:id',Secret.getSecretById);
     app.post('/api/secret',Secret.createSecret);
+    app.put('/api/secret/:id',Secret.updateSecret);
     app.delete('/api/secret/:id',Secret.deleteSecret);
 
     app.get('/api/users',User.getUsers);

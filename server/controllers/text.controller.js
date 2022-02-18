@@ -19,5 +19,10 @@ module.exports = {
         Text.deleteOne({_id: req.params.id})
             .then(text => res.json(text))
             .catch(err=>res.status(400).json('Error: '+ err));
+    },
+    updateText: (req, res) => {
+        Text.findByIdAndUpdate(req.params.id, req.body, {new: true})
+            .then(text => res.json(text))
+            .catch(err=>res.status(400).json('Error: '+ err));
     }
 }

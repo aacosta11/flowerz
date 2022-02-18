@@ -19,5 +19,10 @@ module.exports = {
         Secret.deleteOne({_id: req.params.id})
             .then(secret => res.json(secret))
             .catch(err=>res.status(400).json('Error: '+ err));
+    },
+    updateSecret: (req, res) => {
+        Secret.findByIdAndUpdate(req.params.id, req.body, {new: true})
+            .then(secret => res.json(secret))
+            .catch(err=>res.status(400).json('Error: '+ err));
     }
 }
