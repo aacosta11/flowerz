@@ -41,13 +41,14 @@ input {
     display: flex;
     flex-direction: column;
     text-align: left;
-    row-gap: 3px;
+    row-gap: 8px;
 }
 
 .error {
     color: red;
     font-size: 12px;
     margin-top: 15px;
+    margin-bottom: -35px;
 }
 
 #title {
