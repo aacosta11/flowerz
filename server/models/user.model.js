@@ -3,13 +3,13 @@ const Schema = new mongoose.Schema({
     username: {
         type: String,
         required: [true, 'Username is required'],
-        unique: true,
         minlength: [3, 'Username must be at least 2 characters long'],
+        unique: [true, 'Username is already taken'],
     },
     password: {
         type: String,
         required: [true, 'Password is required'],
-        minlength: [6, 'Password must be at least 4 characters long'],
+        minlength: [4, 'Password must be at least 4 characters long'],
     }
 });
 const User = mongoose.model('User', Schema);

@@ -18,20 +18,21 @@ const Backpack = props => {
             <div className="backpack-content">
                 <h2>these are your items!</h2>
                 <div className="items">
+                    {props.items.length > 0 ? 
+                    <>
                     {props.items.map(item => <div className="item" key={item.id} >
                         <h4>{item.title}</h4>
                         <button onClick={()=>openThisItem(item)}>open</button>
                     </div>)}
+                    </>
+                    :
+                    <p>nothing to see here...</p>}
                 </div>
             </div>
         </div>}
         {isItemOpen && <div className="backpack-overlay" >
             <div className="close-backpack" onClick={()=>setIsItemOpen(false)}></div>
             <div className="backpack-content">
-                {/* <h4>{itemToShow.title}</h4>
-                <p>{itemToShow.header}</p>
-                <p>{itemToShow.body}</p>
-                <p>{itemToShow.footer}</p> */}
                 <Message title={itemToShow.title} header={itemToShow.header} body={itemToShow.body} footer={itemToShow.footer}/>
             </div>    
         </div>}

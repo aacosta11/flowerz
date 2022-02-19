@@ -45,7 +45,6 @@ const Controls = props => {
         }
     }
 
-
     return (<>
         <div className="container">
             <div className="controls">
@@ -53,7 +52,7 @@ const Controls = props => {
                     <div className="temparrowbox" id="left" onClick={e=>handleControlInput(e.target)} name="left" ></div>
                 </div>
                 <div className="section middle">
-                    <div className="temparrowbox" id="up" onClick={e=>handleControlInput(e.target)} name="up" ></div>
+                    <div className="temparrowbox" id="up" onClick={e=>handleControlInput(e.target)} name="up"></div>
                     <div className="temparrowbox" id="down" onClick={e=>handleControlInput(e.target)} name="down" ></div>
                 </div>
                 <div className="section">

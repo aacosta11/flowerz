@@ -12,6 +12,12 @@ module.exports = {
             .then(user => res.json(user))
             .catch(err => res.status(500).json(err));
     },
+    // GET /api/users/:name
+    getUserByName: (req, res) => {
+        User.findOne({ username: req.params.name })
+            .then(user => res.json(user))
+            .catch(err => res.status(500).json(err));
+    },
     // POST /api/users
     createUser: (req, res) => {
         User.create(req.body)

@@ -22,6 +22,7 @@ input {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    row-gap: 15px;
 }
 
 .login-form {
@@ -47,11 +48,17 @@ input {
 .error {
     color: red;
     font-size: 12px;
-    margin-top: 15px;
-    margin-bottom: -35px;
+    /* position: absolute;
+    top: 80%; */
 }
 
 #title {
-    position: absolute;
-    top: 120px;
+    /* position: absolute;
+    top: 120px; */
+}
+
+.login-register-switch {
+    color: blue;
+    font-size: 15px;
+    text-decoration: underline;
 }

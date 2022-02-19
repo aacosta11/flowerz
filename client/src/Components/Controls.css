@@ -20,9 +20,7 @@
 }
 
 .controls {
-    width: 300px;
     display: flex;
-    background-color: lightgrey;
 }
 
 .temparrowbox {
@@ -30,26 +28,30 @@
     height: 40px;
 }
 
+.temparrowbox:active {
+    background-color: lightgrey;
+}
+
 #left {
-    border-top: 5px solid blue;
-    border-left: 5px solid blue;
+    border-top: 10px solid blue;
+    border-left: 10px solid blue;
     transform: rotate(-45deg);
 }
 
 #right {
-    border-top: 5px solid blue;
-    border-right: 5px solid blue;
+    border-top: 10px solid blue;
+    border-right: 10px solid blue;
     transform: rotate(45deg);
 }
 
 #up {
-    border-left: 5px solid blue;
-    border-top: 5px solid blue;
+    border-left: 10px solid blue;
+    border-top: 10px solid blue;
     transform: rotate(45deg);
 }
 
 #down {
-    border-right: 5px solid blue;
-    border-bottom: 5px solid blue;
+    border-right: 10px solid blue;
+    border-bottom: 10px solid blue;
     transform: rotate(45deg);
 }

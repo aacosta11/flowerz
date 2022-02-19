@@ -1,0 +1,9 @@
+
+.logout {
+    position: absolute;
+    left: 5%;
+    top: 15%;
+    text-decoration: underline;
+    border: none;
+    background-color: transparent;
+}
