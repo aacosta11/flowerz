@@ -76,6 +76,7 @@ function App() {
   return (<>
   <LoginContext.Provider value={{isLogInOpen,setIsLogInOpen}} >
     <Login />
+    {/* <AdminPage /> */}
     <PositionContext.Provider value={{position,setPosition}} >
       <FlowerContext.Provider value={{flowerPos,setFlowerPos}} >
         <div className="backdrop-container">

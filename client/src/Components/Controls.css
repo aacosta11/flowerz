@@ -26,6 +26,10 @@
 .temparrowbox {
     width: 40px;
     height: 40px;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .temparrowbox:active {

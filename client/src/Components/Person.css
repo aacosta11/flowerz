@@ -1,4 +1,8 @@
 .personbox {
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
     position: relative;
     width: 60px;
     height: 80px;

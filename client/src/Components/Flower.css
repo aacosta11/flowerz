@@ -1,10 +1,14 @@
 .flower {
     position: relative;
     width: 97px;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .flower-count {
     position: absolute;
     left: 5%;
-    top: 20%;
+    top: 15%;
 }
