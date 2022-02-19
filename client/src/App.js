@@ -23,7 +23,7 @@ function App() {
     scale: 115
   });
 
-  const [flowerPos,setFlowerPos] = useState({x:250,y:300,scale:70});
+  const [flowerPos,setFlowerPos] = useState({x:250,y:300,scale:70,zIndex:8});
   
   const [flowerCount,setFlowerCount] = useState(0);
 
@@ -36,36 +36,38 @@ function App() {
   }
 
   const checkSize = (x,y) => {
-    if (y > 400) return setFlowerPos({x,y,scale:130});
-    if (y > 300) return setFlowerPos({x,y,scale:100});
-    if (y > 200) return setFlowerPos({x,y,scale:70});
+    let zIndex = y > position.y ? 10 : 8;
+    console.log(position.y,y)
+    if (y > 400) return setFlowerPos({x,y,scale:130,zIndex});
+    if (y > 300) return setFlowerPos({x,y,scale:100,zIndex});
+    if (y > 200) return setFlowerPos({x,y,scale:70,zIndex});
   }
 
   useEffect(()=>{
     if (flowerPos.y > 400) {
       if ((position.x <= flowerPos.x - 20 && position.x >= flowerPos.x - 55) && (position.y <= flowerPos.y + 55 && position.y >= flowerPos.y + 25)) {
+        setFlowerCount(flowerCount + 1);
         const x = Math.floor(Math.random() * (320 - 15) + 15);
         const y = Math.floor(Math.random() * (520 - 320) + 320);
         checkSize(x,y);
-        setFlowerCount(flowerCount + 1);
         sessionStorage.setItem('flowers',flowerCount + 1);
       }
     }
     else if (flowerPos.y > 300) {
       if ((position.x <= flowerPos.x - 10 && position.x >= flowerPos.x - 26) && (position.y <= flowerPos.y + 60 && position.y >= flowerPos.y + 40)) {
+        setFlowerCount(flowerCount + 1);
         const x = Math.floor(Math.random() * (320 - 15) + 15);
         const y = Math.floor(Math.random() * (520 - 320) + 320);
         checkSize(x,y);
-        setFlowerCount(flowerCount + 1);
         sessionStorage.setItem('flowers',flowerCount + 1);
       }
     }
     else {
       if ((position.x <= flowerPos.x - 3 && position.x >= flowerPos.x - 15) && (position.y <= flowerPos.y + 58 && position.y >= flowerPos.y - 52)) {
+        setFlowerCount(flowerCount + 1);
         const x = Math.floor(Math.random() * (320 - 15) + 15);
         const y = Math.floor(Math.random() * (520 - 320) + 320);
         checkSize(x,y);
-        setFlowerCount(flowerCount + 1);
         sessionStorage.setItem('flowers',flowerCount + 1);
       }
     }

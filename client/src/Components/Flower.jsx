@@ -8,7 +8,8 @@ const Flower = props => {
     const flowerPosition = {
         top: `${flowerPos.y}px`,
         left: `${flowerPos.x}px`,
-        transform: `scale(${flowerPos.scale}%)`
+        transform: `scale(${flowerPos.scale}%)`,
+        zIndex: flowerPos.zIndex
     }
 
     return (<>

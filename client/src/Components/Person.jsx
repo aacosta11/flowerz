@@ -1,5 +1,5 @@
 import './Person.css';
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import right1 from '../img/right-1.png';
 import right2 from '../img/right-2.png';
 import left1 from "../img/left-1.png";
@@ -23,7 +23,8 @@ const Person = props => {
     const personPosition = {
         top: `${position.y}px`,
         left: `${position.x}px`,
-        transform: `scale(${position.scale}%)`
+        transform: `scale(${position.scale}%)`,
+        zIndex: position.zIndex
     }
 
     return (<>
