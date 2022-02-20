@@ -48,7 +48,7 @@ function App() {
     if (flowerPos.y > 300) {
       if ((position.x <= flowerPos.x - 15 && position.x >= flowerPos.x - 60) && (position.y <= flowerPos.y + 55 && position.y >= flowerPos.y + 25)) {
         setFlowerCount(flowerCount + 1);
-        const x = Math.floor(Math.random() * (320 - 15) + 15);
+        const x = Math.floor(Math.random() * (320 - 20) + 20);
         const y = Math.floor(Math.random() * (320 - 130) + 130);
         checkSize(x,y);
       }
@@ -56,7 +56,7 @@ function App() {
     else if (flowerPos.y > 200) {
       if ((position.x <= flowerPos.x - 5 && position.x >= flowerPos.x - 50) && (position.y <= flowerPos.y + 60 && position.y >= flowerPos.y + 20)) {
         setFlowerCount(flowerCount + 1);
-        const x = Math.floor(Math.random() * (320 - 15) + 15);
+        const x = Math.floor(Math.random() * (320 - 20) + 20);
         const y = Math.floor(Math.random() * (320 - 130) + 130);
         checkSize(x,y);
       }
@@ -64,7 +64,7 @@ function App() {
     else {
       if ((position.x <= flowerPos.x - 10 && position.x >= flowerPos.x - 50) && (position.y <= flowerPos.y + 70 && position.y >= flowerPos.y + 30)) {
         setFlowerCount(flowerCount + 1);
-        const x = Math.floor(Math.random() * (320 - 15) + 15);
+        const x = Math.floor(Math.random() * (320 - 20) + 20);
         const y = Math.floor(Math.random() * (320 - 130) + 130);
         checkSize(x,y);
       }
