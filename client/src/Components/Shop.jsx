@@ -40,7 +40,7 @@ const Shop = props => {
                 <h2>welcome!</h2>
                 <p>flowers available: {props.count}</p>
                 <div className="items">
-                    {itemsForSale.map(item => <div className="item" key={item._id} name={item.cost} id={item._id}>
+                    {itemsForSale.map((item,i) => <div className="item" key={i} name={item.cost} id={item._id}>
                         <h4>{item.title}</h4>
                         <p>cost: {item.cost}</p>
                         {props.count >= item.cost  ? <button onClick={()=>handlePurchase(item)}>buy</button> : <button disabled>buy</button>}

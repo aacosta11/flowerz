@@ -38,7 +38,7 @@ function App() {
   }
 
   const checkSize = (x,y) => {
-    let zIndex = y > position.y - 50 ? 10 : 8;
+    let zIndex = y > position.y - 60 ? 10 : 8;
     if (y > 300) return setFlowerPos({x,y,scale:130,zIndex});
     if (y > 200) return setFlowerPos({x,y,scale:115,zIndex});
     return setFlowerPos({x,y,scale:100,zIndex});
