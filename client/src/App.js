@@ -11,8 +11,11 @@ import Shop from './Components/Shop';
 import Logout from './Components/Logout';
 import Login from './Components/Login';
 import LoginContext from './Context/LoginContext';
+import AdminPage from './Components/AdminPage';
+import AdminContext from './Context/AdminContext';
 function App() {
   const [isLogInOpen,setIsLogInOpen] = useState(true);
+  const [isAdmin,setIsAdmin] = useState(false);
 
   const [position,setPosition] = useState({
     x: 150,
@@ -75,8 +78,10 @@ function App() {
 
   return (<>
   <LoginContext.Provider value={{isLogInOpen,setIsLogInOpen}} >
-    <Login />
-    {/* <AdminPage /> */}
+    <AdminContext.Provider value={{isAdmin,setIsAdmin}} >
+      <Login />
+      <AdminPage />
+    </AdminContext.Provider>
     <PositionContext.Provider value={{position,setPosition}} >
       <FlowerContext.Provider value={{flowerPos,setFlowerPos}} >
         <div className="backdrop-container">

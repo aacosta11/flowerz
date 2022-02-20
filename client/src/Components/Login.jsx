@@ -2,10 +2,11 @@ import React, { useState, useEffect, useContext } from "react";
 import LoginContext from "../Context/LoginContext";
 import axios from "axios";
 import title from '../img/title.png';
+import AdminContext from "../Context/AdminContext";
 import './Login.css';
 const Login = props => {
     const { isLogInOpen,setIsLogInOpen } = useContext(LoginContext);
-
+    const {setIsAdmin} = useContext(AdminContext);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -32,6 +33,10 @@ const Login = props => {
                 setError("");
                 setIsLoading(false);
                 sessionStorage.setItem('user', username);
+                if (username === 'admin') {
+                    setIsAdmin(true);
+                    console.log('admin');
+                }
                 setPassword("");
                 return
             }
