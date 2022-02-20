@@ -25,7 +25,6 @@ const Shop = props => {
 
     const handlePurchase = (e) => {
         if (props.count < e.cost) return;
-        console.log(e._id)
         props.purchase(e);
         let shopCopy = itemsForSale.filter(item => item._id !== e._id);
         setItemsForSale(shopCopy);
@@ -39,6 +38,10 @@ const Shop = props => {
             <div className="shop-content">
                 <h2>welcome!</h2>
                 <p>flowers available: {props.count}</p>
+                {itemsForSale.length < 1 ? 
+                <p>no items for sale</p>
+                :
+                <>
                 <div className="items">
                     {itemsForSale.map((item,i) => <div className="item" key={i} name={item.cost} id={item._id}>
                         <h4>{item.title}</h4>
@@ -46,6 +49,7 @@ const Shop = props => {
                         {props.count >= item.cost  ? <button onClick={()=>handlePurchase(item)}>buy</button> : <button disabled>buy</button>}
                     </div>)}
                 </div>
+                </>}
             </div>
         </div>}
     </>)

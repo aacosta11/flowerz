@@ -20,7 +20,7 @@ const Backpack = props => {
                 <div className="items">
                     {props.items.length > 0 ? 
                     <>
-                    {props.items.map(item => <div className="item" key={item.id} >
+                    {props.items.map((item,i) => <div className="item" key={i} >
                         <h4>{item.title}</h4>
                         <button onClick={()=>openThisItem(item)}>open</button>
                     </div>)}
