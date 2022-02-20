@@ -38,7 +38,6 @@ function App() {
   }
 
   const checkSize = (x,y) => {
-    console.log(position.y,y)
     let zIndex = y > position.y - 50 ? 10 : 8;
     if (y > 300) return setFlowerPos({x,y,scale:130,zIndex});
     if (y > 200) return setFlowerPos({x,y,scale:115,zIndex});
@@ -47,7 +46,7 @@ function App() {
 
   useEffect(()=>{
     if (flowerPos.y > 300) {
-      if ((position.x <= flowerPos.x - 20 && position.x >= flowerPos.x - 55) && (position.y <= flowerPos.y + 55 && position.y >= flowerPos.y + 25)) {
+      if ((position.x <= flowerPos.x - 15 && position.x >= flowerPos.x - 60) && (position.y <= flowerPos.y + 55 && position.y >= flowerPos.y + 25)) {
         setFlowerCount(flowerCount + 1);
         const x = Math.floor(Math.random() * (320 - 15) + 15);
         const y = Math.floor(Math.random() * (320 - 130) + 130);
@@ -55,7 +54,7 @@ function App() {
       }
     }
     else if (flowerPos.y > 200) {
-      if ((position.x <= flowerPos.x - 10 && position.x >= flowerPos.x - 40) && (position.y <= flowerPos.y + 60 && position.y >= flowerPos.y + 20)) {
+      if ((position.x <= flowerPos.x - 5 && position.x >= flowerPos.x - 50) && (position.y <= flowerPos.y + 60 && position.y >= flowerPos.y + 20)) {
         setFlowerCount(flowerCount + 1);
         const x = Math.floor(Math.random() * (320 - 15) + 15);
         const y = Math.floor(Math.random() * (320 - 130) + 130);
