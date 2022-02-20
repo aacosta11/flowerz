@@ -25,7 +25,7 @@ const Controls = props => {
                 foot: !position.foot
             })
         }
-        else if(e.attributes.name.value === 'up' && position.y > 330){
+        else if(e.attributes.name.value === 'up' && position.y > 130){
             setPosition({
                 ...position,
                 y: position.y - 8,
@@ -34,7 +34,7 @@ const Controls = props => {
                 scale: position.scale - 4
             })
         }
-        else if(e.attributes.name.value === 'down' && position.y < 540){
+        else if(e.attributes.name.value === 'down' && position.y < 380){
             setPosition({
                 ...position,
                 y: position.y + 8,

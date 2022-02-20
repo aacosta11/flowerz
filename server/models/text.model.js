@@ -15,7 +15,8 @@ const Schema = new mongoose.Schema({
         type: String,
     },
     cost: {
-        type: Number
+        type: Number,
+        required: [true, 'Cost is required'],
     }
 })
 const Text = mongoose.model('Text', Schema);
