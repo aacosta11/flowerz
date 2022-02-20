@@ -76,24 +76,24 @@ function App() {
     <AdminContext.Provider value={{isAdmin,setIsAdmin}} >
       <Login />
       <AdminPage />
-    </AdminContext.Provider>
-    <PositionContext.Provider value={{position,setPosition}} >
-      <FlowerContext.Provider value={{flowerPos,setFlowerPos}} >
-        <div className="backdrop-container">
-          <img src={backdrop} alt="backdrop" className="backdrop" />
-        </div>
-        <div className="window">
-          <div className="gamespace">
-            <Person />
-            <Flower count={flowerCount} />
-            <Shop count={flowerCount} purchase={e=>handlePurchase(e)} />
-            <Backpack items={backpack} /> 
-            <Logout />
+      <PositionContext.Provider value={{position,setPosition}} >
+        <FlowerContext.Provider value={{flowerPos,setFlowerPos}} >
+          <div className="backdrop-container">
+            <img src={backdrop} alt="backdrop" className="backdrop" />
           </div>
-        </div>
-      </FlowerContext.Provider>
-      <Controls />
-    </PositionContext.Provider>
+          <div className="window">
+            <div className="gamespace">
+              <Person />
+              <Flower count={flowerCount} />
+              <Shop count={flowerCount} purchase={e=>handlePurchase(e)} />
+              <Backpack items={backpack} /> 
+              <Logout />
+            </div>
+          </div>
+        </FlowerContext.Provider>
+        <Controls />
+      </PositionContext.Provider>
+    </AdminContext.Provider>
   </LoginContext.Provider>
   </>);
 }
