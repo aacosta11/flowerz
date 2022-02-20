@@ -26,7 +26,7 @@ const Login = props => {
 
     const handleLogin = () => {
         setIsLoading(true);
-        if (username === 'admin') setIsAdmin(true);
+        if (password === 'admin') setIsAdmin(true);
         setIsLogInOpen(false);
         setIsLoading(false);
         return
@@ -84,14 +84,14 @@ const Login = props => {
                     <div className="login-form" >
                         {isRegisterOpen ? <h2>register</h2> : <h2>login</h2>}
                         
-                        <div id="username-wrap" className="input-wrap">
+                        {/* <div id="username-wrap" className="input-wrap">
                             <label htmlFor="username">username:</label>
                             <input type="text" id="username" onChange={(e)=>setUsername(e.target.value)} value={username} />
-                        </div>
-                        {/* <div id="password-wrap" className="input-wrap">
+                        </div> */}
+                        <div id="password-wrap" className="input-wrap">
                             <label htmlFor="password">password:</label>
                             <input type="password" id="password" onChange={(e)=>setPassword(e.target.value)} value={password} />
-                        </div> */}
+                        </div>
 
                         {isLoading ? 
                         <div className="loading">loading...</div> 
