@@ -9,6 +9,7 @@ const Shop = props => {
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/text`)
         .then(res => {
+            console.log(res.data)
             setItemsForSale(res.data);
         })
         .catch(err => console.log(err));
@@ -25,15 +26,10 @@ const Shop = props => {
 
     const handlePurchase = (e) => {
         if (props.count < e.cost) return;
-        
-        for (let x in itemsForSale) {
-            if (itemsForSale[x].id === e.id) {
-                props.purchase(itemsForSale[x]);
-                setItemsForSale(itemsForSale.filter(item => item.id !== e.id))
-                return
-            }
-        }
-        props.purchase(e)
+        props.purchase(e);
+        let shopCopy = itemsForSale.filter(item => item.id !== e.id);
+        setItemsForSale(shopCopy);
+        return
     }
 
     return (<>

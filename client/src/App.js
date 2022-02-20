@@ -33,13 +33,13 @@ function App() {
   const [backpack,setBackpack] = useState([]);
 
   const handlePurchase = (e) => {
-    sessionStorage.setItem('flowers',flowerCount - 1);
     setFlowerCount(flowerCount - e.cost);
     setBackpack([...backpack,e]);
   }
 
   const checkSize = (x,y) => {
-    let zIndex = y > position.y ? 10 : 8;
+    console.log(position.y,y)
+    let zIndex = y > position.y - 50 ? 10 : 8;
     if (y > 300) return setFlowerPos({x,y,scale:130,zIndex});
     if (y > 200) return setFlowerPos({x,y,scale:115,zIndex});
     return setFlowerPos({x,y,scale:100,zIndex});
@@ -52,7 +52,6 @@ function App() {
         const x = Math.floor(Math.random() * (320 - 15) + 15);
         const y = Math.floor(Math.random() * (320 - 130) + 130);
         checkSize(x,y);
-        sessionStorage.setItem('flowers',flowerCount + 1);
       }
     }
     else if (flowerPos.y > 200) {
@@ -61,7 +60,6 @@ function App() {
         const x = Math.floor(Math.random() * (320 - 15) + 15);
         const y = Math.floor(Math.random() * (320 - 130) + 130);
         checkSize(x,y);
-        sessionStorage.setItem('flowers',flowerCount + 1);
       }
     }
     else {
@@ -70,7 +68,6 @@ function App() {
         const x = Math.floor(Math.random() * (320 - 15) + 15);
         const y = Math.floor(Math.random() * (320 - 130) + 130);
         checkSize(x,y);
-        sessionStorage.setItem('flowers',flowerCount + 1);
       }
     }
   },[position])

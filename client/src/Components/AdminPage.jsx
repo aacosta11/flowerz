@@ -4,9 +4,9 @@ import './AdminPage.css';
 import AdminContext from "../Context/AdminContext";
 const AdminPage = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const {isAdmin, setIsAdmin} = useContext(AdminContext);
-    const [message,setMessage] = useState({title:'',header:'',body:'',footer:''});
-    const [secretMessage,setSecretMessage] = useState({title:'',header:'',body:'',footer:''});
+    const {isAdmin} = useContext(AdminContext);
+    const [message,setMessage] = useState({title:'',header:'',body:'',footer:'',cost:0});
+    const [secretMessage,setSecretMessage] = useState({title:'',header:'',body:'',footer:'',cost:0});
 
     const handleMessageSubmit = () => {
         axios.post('http://localhost:8000/api/text', message)
@@ -46,6 +46,10 @@ const AdminPage = () => {
                             <label htmlFor="message-footer">footer</label>
                             <input type="text" id="message-footer" value={message.footer} onChange={(e)=>setMessage({...message,footer:e.target.value})} />
                         </div>
+                        <div className="input-wrap">
+                            <label htmlFor="message-cost">cost</label>
+                            <input type="number" id="message-cost" value={message.cost} onChange={(e)=>setMessage({...message,cost:e.target.value})} />
+                        </div>
                         <input type="submit" value="create message" onClick={handleMessageSubmit}  />
                     </div>
 
@@ -66,6 +70,10 @@ const AdminPage = () => {
                         <div className="input-wrap">
                             <label htmlFor="secretMessage-footer">footer</label>
                             <input type="text" id="secretMessage-footer" value={secretMessage.footer} onChange={(e)=>setSecretMessage({...secretMessage,footer:e.target.value})} />
+                        </div>
+                        <div className="input-wrap">
+                            <label htmlFor="secretMessage-cost">cost</label>
+                            <input type="number" id="secretMessage-cost" value={secretMessage.cost} onChange={(e)=>setSecretMessage({...secretMessage,cost:e.target.value})} />
                         </div>
                         <input type="submit" value="create secret message" onClick={handleSecretMessageSubmit} />
                     </div>
