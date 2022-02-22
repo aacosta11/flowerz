@@ -3,10 +3,12 @@ import LoginContext from "../Context/LoginContext";
 import axios from "axios";
 import title from '../img/title.png';
 import AdminContext from "../Context/AdminContext";
+import EnvironmentContext from "../Context/EnvironmentContext";
 import './Login.css';
 const Login = props => {
     const { isLogInOpen,setIsLogInOpen } = useContext(LoginContext);
     const {setIsAdmin} = useContext(AdminContext);
+    const {apiRoute} = useContext(EnvironmentContext);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -19,6 +21,7 @@ const Login = props => {
     useEffect(()=>{
         if (sessionStorage.getItem('user')) {
             setIsLogInOpen(false);
+            if (sessionStorage.getItem('isAdmin')) setIsAdmin(true);
             return
         }
         setIsLogInOpen(true);
@@ -26,40 +29,37 @@ const Login = props => {
 
     const handleLogin = () => {
         setIsLoading(true);
-        if (password === 'admin') setIsAdmin(true);
-        setIsLogInOpen(false);
-        setIsLoading(false);
-        return
-        
-        // axios.get(`http://localhost:8000/api/users/${username}` )
-        // .then(res => {
-        //     if (res.data.password === password) {
-        //         setIsLogInOpen(false);
-        //         setError("");
-        //         setIsLoading(false);
-        //         sessionStorage.setItem('user', username);
-        //         if (username === 'admin') {
-        //             setIsAdmin(true);
-        //             console.log('admin');
-        //         }
-        //         setPassword("");
-        //         return
-        //     }
-        //     setError("Invalid username or password");
-        //     setIsLoading(false);
-        //     setPassword("");
-        // })
-        // .catch(err => {
-        //     setError("Invalid username or password");
-        //     console.log(err);
-        //     setPassword("");
-        //     setIsLoading(false);
-        // });
+        axios.get(`${apiRoute}/users/${username}` )
+        .then(res => {
+            if (res.data.password === password) {
+                setIsLogInOpen(false);
+                setError("");
+                setIsLoading(false);
+                sessionStorage.setItem('user', username);
+                if (username === 'admin') {
+                    setIsAdmin(true);
+                    sessionStorage.setItem('isAdmin', true);
+                    console.log('admin');
+                }
+                setPassword("");
+                return
+            }
+            setError("Invalid username or password");
+            setIsLoading(false);
+            setPassword("");
+        })
+        .catch(err => {
+            setError("Invalid username or password");
+            console.log(err);
+            console.log(apiRoute)
+            setPassword("");
+            setIsLoading(false);
+        });
     }
 
     const handleRegister = () => {
         setIsLoading(true);
-        axios.post(`http://localhost:8000/api/users`, {username,password})
+        axios.post(`${apiRoute}/users`, {username,password})
         .then(res => {
             sessionStorage.setItem('user', username);
             setIsRegisterOpen(false);
@@ -84,10 +84,10 @@ const Login = props => {
                     <div className="login-form" >
                         {isRegisterOpen ? <h2>register</h2> : <h2>login</h2>}
                         
-                        {/* <div id="username-wrap" className="input-wrap">
+                        <div id="username-wrap" className="input-wrap">
                             <label htmlFor="username">username:</label>
                             <input type="text" id="username" onChange={(e)=>setUsername(e.target.value)} value={username} />
-                        </div> */}
+                        </div>
                         <div id="password-wrap" className="input-wrap">
                             <label htmlFor="password">password:</label>
                             <input type="password" id="password" onChange={(e)=>setPassword(e.target.value)} value={password} />
@@ -103,7 +103,7 @@ const Login = props => {
                             <button className="login-btn" onClick={handleLogin}>login</button>}
                         </>}
 
-                        {/* <p className="login-register-switch" onClick={()=>setIsRegisterOpen(!isRegisterOpen)}>{isRegisterOpen ? 'have an account?' : 'create account'}</p> */}
+                        <p className="login-register-switch" onClick={()=>setIsRegisterOpen(!isRegisterOpen)}>{isRegisterOpen ? 'have an account?' : 'create account'}</p>
 
                     </div>
                     {error ? <p className="error">{error}</p> : <p>&nbsp;</p>}

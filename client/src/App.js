@@ -13,9 +13,12 @@ import Login from './Components/Login';
 import LoginContext from './Context/LoginContext';
 import AdminPage from './Components/AdminPage';
 import AdminContext from './Context/AdminContext';
+import EnvironmentContext from './Context/EnvironmentContext';
 function App() {
   const [isLogInOpen,setIsLogInOpen] = useState(true);
   const [isAdmin,setIsAdmin] = useState(false);
+  const [apiRoute,setApiRoute] = useState('https://flowerzgame.com/api');
+  const [environmentSet,setEnvironmentSet] = useState(false);
 
   const [position,setPosition] = useState({
     x: 150,
@@ -43,6 +46,11 @@ function App() {
     if (y > 200) return setFlowerPos({x,y,scale:115,zIndex});
     return setFlowerPos({x,y,scale:100,zIndex});
   }
+  
+  useEffect(()=>{
+    if (process.env.NODE_ENV === 'development') setApiRoute('http://localhost:8000/api');
+    setEnvironmentSet(true)
+  },[process.env.NODE_ENV]);
 
   useEffect(()=>{
     if (flowerPos.y > 300) {
@@ -74,25 +82,32 @@ function App() {
   return (<>
   <LoginContext.Provider value={{isLogInOpen,setIsLogInOpen}} >
     <AdminContext.Provider value={{isAdmin,setIsAdmin}} >
-      <Login />
-      <AdminPage />
-      <PositionContext.Provider value={{position,setPosition}} >
-        <FlowerContext.Provider value={{flowerPos,setFlowerPos}} >
-          <div className="backdrop-container">
-            <img src={backdrop} alt="backdrop" className="backdrop" />
-          </div>
-          <div className="window">
-            <div className="gamespace">
-              <Person />
-              <Flower count={flowerCount} />
-              <Shop count={flowerCount} purchase={e=>handlePurchase(e)} />
-              <Backpack items={backpack} /> 
-              <Logout />
+      <EnvironmentContext.Provider value={{apiRoute,setApiRoute}} >
+        <Login />
+        {environmentSet && 
+        <>
+        <PositionContext.Provider value={{position,setPosition}} >
+          <FlowerContext.Provider value={{flowerPos,setFlowerPos}} >
+            <div className="backdrop-container">
+              <img src={backdrop} alt="backdrop" className="backdrop" />
             </div>
-          </div>
-        </FlowerContext.Provider>
-        <Controls />
-      </PositionContext.Provider>
+            <div className="window">
+              <div className="gamespace">
+                <Person />
+                <Flower count={flowerCount} />
+                <Shop count={flowerCount} purchase={e=>handlePurchase(e)} />
+                <Backpack items={backpack} /> 
+                <Logout />
+                <AdminPage />
+                <Controls />
+              </div>
+            </div>
+          </FlowerContext.Provider>
+          
+        </PositionContext.Provider>
+        </>}
+        
+      </EnvironmentContext.Provider>
     </AdminContext.Provider>
   </LoginContext.Provider>
   </>);

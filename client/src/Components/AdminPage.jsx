@@ -2,20 +2,22 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import './AdminPage.css';
 import AdminContext from "../Context/AdminContext";
+import EnvironmentContext from "../Context/EnvironmentContext";
 const AdminPage = () => {
     const [isOpen, setIsOpen] = useState(false);
     const {isAdmin} = useContext(AdminContext);
+    const {apiRoute} = useContext(EnvironmentContext);
     const [message,setMessage] = useState({title:'',header:'',body:'',footer:'',cost:0});
     const [secretMessage,setSecretMessage] = useState({title:'',header:'',body:'',footer:'',cost:0});
 
     const handleMessageSubmit = () => {
-        axios.post('http://localhost:8000/api/text', message)
+        axios.post(`${apiRoute}/text`, message)
         .then(res => {console.log(res.data)})
         .catch(err => {console.log(err)});
     }
 
     const handleSecretMessageSubmit = () => {
-        axios.post('http://localhost:8000/api/secret', secretMessage)
+        axios.post(`${apiRoute}/secret`, secretMessage)
         .then(res => {console.log(res.data)})
         .catch(err => {console.log(err)});
     }
