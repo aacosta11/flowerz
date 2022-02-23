@@ -72,6 +72,6 @@ input {
 }
 }
 
-img {
+#title {
     animation: rotate 3s infinite alternate ease-in-out;
 }
