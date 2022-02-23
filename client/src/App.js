@@ -14,7 +14,9 @@ import LoginContext from './Context/LoginContext';
 import AdminPage from './Components/AdminPage';
 import AdminContext from './Context/AdminContext';
 import EnvironmentContext from './Context/EnvironmentContext';
+import SecretUserContext from './Context/SecretUserContext';
 function App() {
+  const [isSecretUser, setIsSecretUser] = useState(false);
   const [isLogInOpen,setIsLogInOpen] = useState(true);
   const [isAdmin,setIsAdmin] = useState(false);
   const [apiRoute,setApiRoute] = useState('https://flowerzgame.com/api');
@@ -53,6 +55,10 @@ function App() {
   },[process.env.NODE_ENV]);
 
   useEffect(()=>{
+    setBackpack([]);
+  },[sessionStorage.getItem('user')])
+
+  useEffect(()=>{
     if (flowerPos.y > 300) {
       if ((position.x <= flowerPos.x - 15 && position.x >= flowerPos.x - 60) && (position.y <= flowerPos.y + 55 && position.y >= flowerPos.y + 25)) {
         setFlowerCount(flowerCount + 1);
@@ -83,30 +89,32 @@ function App() {
   <LoginContext.Provider value={{isLogInOpen,setIsLogInOpen}} >
     <AdminContext.Provider value={{isAdmin,setIsAdmin}} >
       <EnvironmentContext.Provider value={{apiRoute,setApiRoute}} >
-        <Login />
-        {environmentSet && 
-        <>
-        <PositionContext.Provider value={{position,setPosition}} >
-          <FlowerContext.Provider value={{flowerPos,setFlowerPos}} >
-            <div className="backdrop-container">
-              <img src={backdrop} alt="backdrop" className="backdrop" />
-            </div>
-            <div className="window">
-              <div className="gamespace">
-                <Person />
-                <Flower count={flowerCount} />
-                <Shop count={flowerCount} purchase={e=>handlePurchase(e)} />
-                <Backpack items={backpack} /> 
-                <Logout />
-                <AdminPage />
-                <Controls />
+        <SecretUserContext.Provider value={{isSecretUser,setIsSecretUser}} >
+          <Login />
+          {environmentSet && 
+          <>
+          <PositionContext.Provider value={{position,setPosition}} >
+            <FlowerContext.Provider value={{flowerPos,setFlowerPos}} >
+              <div className="backdrop-container">
+                <img src={backdrop} alt="backdrop" className="backdrop" />
               </div>
-            </div>
-          </FlowerContext.Provider>
-          
-        </PositionContext.Provider>
-        </>}
-        
+              <div className="window">
+                <div className="gamespace">
+                  <Person />
+                  <Flower count={flowerCount} />
+                  {!isLogInOpen && <>
+                    <Shop count={flowerCount} purchase={e=>handlePurchase(e)} />
+                    <Backpack items={backpack} /> 
+                    <Logout />
+                    <AdminPage />
+                    <Controls />
+                  </>}
+                </div>
+              </div>
+            </FlowerContext.Provider>\
+          </PositionContext.Provider>
+          </>}
+        </SecretUserContext.Provider>
       </EnvironmentContext.Provider>
     </AdminContext.Provider>
   </LoginContext.Provider>
