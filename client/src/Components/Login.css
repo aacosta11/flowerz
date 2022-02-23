@@ -62,3 +62,16 @@ input {
     font-size: 15px;
     text-decoration: underline;
 }
+
+@keyframes rotate {
+    from {
+        transform: rotate(-2deg);
+    }
+    to {
+        transform: rotate(2deg);
+}
+}
+
+img {
+    animation: rotate 3s infinite alternate ease-in-out;
+}
