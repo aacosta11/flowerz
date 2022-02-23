@@ -7,7 +7,7 @@ const Logout = props => {
     const { setIsAdmin } = useContext(AdminContext);
     const handleLogout = () => {
         sessionStorage.removeItem("user");
-        sessionStorage.removeItem("flowers");
+        sessionStorage.removeItem("isAdmin");
         setIsAdmin(false);
         setIsLogInOpen(true);
     }

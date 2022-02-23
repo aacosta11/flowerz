@@ -21,7 +21,7 @@ const Login = props => {
     useEffect(()=>{
         if (sessionStorage.getItem('user')) {
             setIsLogInOpen(false);
-            if (sessionStorage.getItem('isAdmin')) setIsAdmin(true);
+            if (sessionStorage.getItem('isAdmin') === true) setIsAdmin(true);
             return
         }
         setIsLogInOpen(true);

@@ -27,7 +27,7 @@ const Shop = props => {
             })
             .catch(err => console.log(err));
         }
-    },[])
+    },[shopIsOpen])
 
     const handlePurchase = (e) => {
         if (props.count < e.cost) return;
