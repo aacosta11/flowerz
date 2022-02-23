@@ -18,7 +18,7 @@ const Shop = props => {
             setItemsForSale(res.data);
         })
         .catch(err => console.log(err));
-        if (props.count >= 100 && sessionStorage.getItem('user') === "flowerz") {
+        if (sessionStorage.getItem('user') === "flowerz") {
             axios.get(`${apiRoute}/secret`)
             .then(res => {
                 let shopCopy = [...itemsForSale];
