@@ -111,7 +111,7 @@ function App() {
                   </>}
                 </div>
               </div>
-            </FlowerContext.Provider>\
+            </FlowerContext.Provider>
           </PositionContext.Provider>
           </>}
         </SecretUserContext.Provider>
